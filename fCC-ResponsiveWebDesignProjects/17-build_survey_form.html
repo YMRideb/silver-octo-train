@@ -29,7 +29,7 @@
 
         <fieldset>
           <legend>Ratings</legend>
-<!-- this is not finished-->
+
           <label for="service">How was the service?</label>
 
           <select name="dropdown" id="dropdown">
@@ -41,11 +41,50 @@
           </select>
         </fieldset>
         <fieldset>
-          <legend>Was this your first time at our hotel?</legend>
-          <input id="yes-option" type="radio" name="hotel-stay" />
+          <legend>Would you recommend this to a friend?</legend>
+          <input id="yes-option" type="radio" name="recommendation" value="yes" />
           <label for="yes-option">Yes</label>
-          <input id="no-option" type="radio" name="hotel-stay" />
+          <input id="no-option" type="radio" name="recommendation" value="no"/>
           <label for="no-option">No</label>
+          <input for="maybe-option" type="radio" name="recommendation" value="maybe"/>
+          <label for="maybe-option">Maybe</label>
         </fieldset>  
+        <fieldset>
+          <legend>
+            Why did you choose to use this service? (Choose all that apply)
+          </legend>
+
+          <input type="checkbox" id="ads" name="choice" value="ads" />
+          <label for="ads">Social Media Ads</label>
+
+          <input
+            type="checkbox"
+            id="recommendation"
+            name="choice"
+            value="recommendation"
+          />
+          <label for="recommendation">Personal Recommendation</label>
+          
+          <input checked type="checkbox" id="ease" name="choice" value="ease" />
+          <label for="ease">Easy to use</label>
+
+          <input
+            type="checkbox"
+            id="television"
+            name="choice"
+            value="television"
+          />
+          <label for="television">Television Ads</label>
+          
+          <input type="checkbox" id="price" name="choice" value="price" />
+          <label for="price">Price</label>
+        </fieldset>
+        <fieldset>
+        <label for="comments">Any feedback for us?</label>
+        <textarea cols="30" rows="10" name="feedback" id="feedback"></textarea>
+
+        <button type="submit" id="submit">Submit</button>
+        </fieldset>
+        </form> 
         </body>
 </html>
