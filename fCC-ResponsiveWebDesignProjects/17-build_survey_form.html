@@ -1,90 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
+
   <head>
     <meta charset="UTF-8" />
-    <title>Survey Form</title>
+    <title>Checkout Page</title>
   </head>
 
   <body>
-    <h1 id="title">Survey Form</h1>
-    <p id="description">The following survey is for the user to complete</p>
-<form id="survey-form">
-        <fieldset>
-          <legend>Personal Information</legend>
-          <label for="name-label" id="name-label">Name (required):</label>
-          <input type="text" id="name" name="name" placeholder="e.g., John Doe" required size="20">
+    <h1>Checkout</h1>
+    <section>
+      <h2>Your Cart</h2>
+      <img src="https://cdn.freecodecamp.org/curriculum/labs/cube.jpg" alt="A Rubik's cube opened mid-solve" />
+    </section>
+    <section>
+      <h2>Payment Information</h2>
+      <form id="payment-information">
+        <input type="text" id="card-name" name="card-name" required />
+        <label for="card-name" id="card-name">Card Name<span aria-hidden="true">*</span></label>
 
-          <label for="email-label" id="email-label">Email address (required):</label>
-          <input
-            placeholder="example@email.com"
-            required
-            id="email"
-            type="email"
-            name="email"
-            size="20"
-          />
-          <label for="number-label" id="number-label">Number (optional):</label>
-          <input type="number" name="age" id="number" min="3" max="100" placeholder="1" />
-        </fieldset>
+        <input type="text" id="card-number" name="card-number" aria-describedby="card-number-help" required />
+        <label for="card-number" id="card_number">Card Number<span aria-hidden="true">*</span></label>
+        <p id="card-number-help">Please enter your payment information to continue</p>
+      </form>
+    </section>
+  </body>
 
-        <fieldset>
-          <legend>Ratings</legend>
-
-          <label for="service">How was the service?</label>
-
-          <select name="dropdown" id="dropdown">
-            <option value="poor">Poor</option>
-            <option value="satisfactory">Satisfactory</option>
-            <option value="good">Good</option>
-            <option value="very-good">Very Good</option>
-            <option selected value="excellent">Excellent</option>
-          </select>
-        </fieldset>
-        <fieldset>
-          <legend>Would you recommend this to a friend?</legend>
-          <input id="yes-option" type="radio" name="recommendation" value="yes" />
-          <label for="yes-option">Yes</label>
-          <input id="no-option" type="radio" name="recommendation" value="no"/>
-          <label for="no-option">No</label>
-          <input for="maybe-option" type="radio" name="recommendation" value="maybe"/>
-          <label for="maybe-option">Maybe</label>
-        </fieldset>  
-        <fieldset>
-          <legend>
-            Why did you choose to use this service? (Choose all that apply)
-          </legend>
-
-          <input type="checkbox" id="ads" name="choice" value="ads" />
-          <label for="ads">Social Media Ads</label>
-
-          <input
-            type="checkbox"
-            id="recommendation"
-            name="choice"
-            value="recommendation"
-          />
-          <label for="recommendation">Personal Recommendation</label>
-          
-          <input checked type="checkbox" id="ease" name="choice" value="ease" />
-          <label for="ease">Easy to use</label>
-
-          <input
-            type="checkbox"
-            id="television"
-            name="choice"
-            value="television"
-          />
-          <label for="television">Television Ads</label>
-          
-          <input type="checkbox" id="price" name="choice" value="price" />
-          <label for="price">Price</label>
-        </fieldset>
-        <fieldset>
-        <label for="comments">Any feedback for us?</label>
-        <textarea cols="30" rows="10" name="feedback" id="feedback"></textarea>
-
-        <button type="submit" id="submit">Submit</button>
-        </fieldset>
-        </form> 
-        </body>
 </html>
