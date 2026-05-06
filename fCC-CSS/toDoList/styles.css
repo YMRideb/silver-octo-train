@@ -1,0 +1,28 @@
+body {
+    background-color: slategrey;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:link {
+    color: cyan;
+}
+
+a:visited {
+    color: indigo;
+}
+
+a:hover {
+    color: magenta;
+}
+
+a:focus {
+    text-decoration: outline;
+    color: lightgreen;
+}
+
+a:action {
+    color: wheat;
+}
