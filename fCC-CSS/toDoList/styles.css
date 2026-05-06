@@ -1,5 +1,5 @@
 body {
-    background-color: slategrey;
+    background-color: indigo;
 }
 
 a {
@@ -11,7 +11,7 @@ a:link {
 }
 
 a:visited {
-    color: indigo;
+    color: chartreuse;
 }
 
 a:hover {
@@ -19,10 +19,10 @@ a:hover {
 }
 
 a:focus {
-    text-decoration: outline;
+    outline: 1px solid red;
     color: lightgreen;
 }
 
-a:action {
+a:active {
     color: wheat;
 }
