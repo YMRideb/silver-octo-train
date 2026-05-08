@@ -7,5 +7,32 @@ body {
     border: 2px dotted black;
     border-radius: 10px;
     width: 80%;
+    text-align: center;
+}
 
+.post-img {
+  background-size: contain;
+  border-bottom: 5px solid red;
+  width: 100%;
+}
+.post-content {
+  padding:10px;
+}
+
+.post-title, .post-excerpt {
+  color: blue;
+  margin: 10px;
+}
+
+.read-more {
+  background-color: chartreuse;
+  color: orange;
+  padding: 10px;
+  margin: 10px;
+  border-radius: 5px;
+  display: inline-block;
+}
+
+.read-more:hover {
+  background-color: teal;
 }
