@@ -1,0 +1,15 @@
+body {
+  min-height: calc(100vh - 100px);
+  width: 1vw;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  margin-top: 0;
+  margin-bottom: 0;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+hr, section {
+  width: 80%;
+}
+/* this does not look great
