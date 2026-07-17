@@ -1,0 +1,173 @@
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Star Trail</title>
+  <style>
+    body {
+      background-color: black;
+      color: #00ffcc;
+      font-family: 'Courier New', monospace;
+      margin: 0;
+      padding: 20px;
+    }
+    #game-container {
+      max-width: 600px;
+      margin: auto;
+      border: 1px solid #00ffcc;
+      padding: 20px;
+      border-radius: 8px;
+    }
+    #output {
+      min-height: 200px;
+      white-space: pre-wrap;
+      margin-bottom: 20px;
+    }
+    input[type=text] {
+      width: 100%;
+      padding: 10px;
+      background-color: #111;
+      color: #00ffcc;
+      border: 1px solid #00ffcc;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+  <div id="game-container">
+    <h1>🚀 Star Trail</h1>
+    <div id="output"></div>
+    <input type="text" id="input" placeholder="Type your command..." autofocus>
+  </div> <script>
+    const output = document.getElementById('output');
+    const input = document.getElementById('input');
+
+    const game = {
+      day: 1,
+      distance: 0,
+      fuel: 100,
+      oxygen: 100,
+      hull: 100,
+      morale: 100,
+      alive: true,
+      destination: 1000,
+      started: false
+    };
+
+    const intro = `Welcome, Captain. Earth is lost.\n\nYour mission: reach the Eden-7 colony, 1,000 light-years away.\nManage your ship’s resources and make the hard calls.\n\nCommands: travel, rest, scavenge, repair, status, help\n\nType 'start' to begin.`;
+
+    const print = (text) => {
+      output.textContent += text + "\n\n";
+      output.scrollTop = output.scrollHeight;
+    };
+
+    const status = () => {
+      print(`Day ${game.day}\nDistance: ${game.distance}/${game.destination}\nFuel: ${game.fuel}%\nOxygen: ${game.oxygen}%\nHull: ${game.hull}%\nMorale: ${game.morale}%`);
+    };
+
+    const randomEvent = () => {
+      const events = [
+        () => print("You encounter cosmic radiation. Oxygen filters degrade (-10%)."),
+        () => print("A meteor grazes the hull. Minor damage sustained (-15%)."),
+        () => print("Crew morale dips after a long silence in the void (-10%)."),
+        () => print("You find derelict ship remains. Salvaged fuel (+15%)."),
+        () => print("Solar flare knocks out comms temporarily, no effect."),
+      ];
+      const e = Math.floor(Math.random() * events.length);
+      events[e]();
+      if (e === 0) game.oxygen -= 10;
+      if (e === 1) game.hull -= 15;
+      if (e === 2) game.morale -= 10;
+      if (e === 3) game.fuel += 15;
+    };
+
+    const actions = {
+      start: () => {
+        if (game.started) return print("Already in flight, Captain.");
+        game.started = true;
+        print("Engaging engines. We depart for Eden-7.\nGood luck, Captain.");
+      },
+
+      travel: () => {
+        if (!game.started) return print("You must start first.");
+        const distance = Math.floor(Math.random() * 100) + 50;
+        game.distance += distance;
+        game.fuel -= 15;
+        game.oxygen -= 5;
+        game.morale -= 5;
+        game.day++;
+        print(`Traveled ${distance} light-years.`);
+        randomEvent();
+        checkStatus();
+      },
+
+      rest: () => {
+        if (!game.started) return print("Start the journey first.");
+        game.day++;
+        game.morale += 10;
+        game.oxygen -= 5;
+        game.fuel -= 2;
+        print("Crew rests. Morale improves slightly.");
+        randomEvent();
+        checkStatus();
+      },
+
+      scavenge: () => {
+        if (!game.started) return print("Start the journey first.");
+        game.day++;
+        const find = Math.random();
+        if (find < 0.4) {
+          print("Found abandoned freighter. Fuel +20%.");
+          game.fuel += 20;
+        } else if (find < 0.8) {
+          print("Collected oxygen from frozen comet. Oxygen +15%.");
+          game.oxygen += 15;
+        } else {
+          print("Nothing found. Wasted a day.");
+        }
+        checkStatus();
+      },
+
+      repair: () => {
+        if (!game.started) return print("Start the journey first.");
+        game.day++;
+        game.hull += 20;
+        game.fuel -= 10;
+        game.morale -= 5;
+        print("Repaired hull using spare fuel reserves.");
+        checkStatus();
+      },
+
+      status: status,
+
+      help: () => {
+        print("Commands: travel, rest, scavenge, repair, status, help");
+      }
+    };
+
+    function checkStatus() {
+      if (game.distance >= game.destination) {
+        print("Congratulations, Captain! You've reached Eden-7. Humanity survives because of you.");
+        game.alive = false;
+        input.disabled = true;
+        return;
+      }
+      if (game.fuel <= 0 || game.oxygen <= 0 || game.hull <= 0 || game.morale <= 0) {
+        print("Your ship drifts lifelessly into the void. Mission failed.");
+        game.alive = false;
+        input.disabled = true;
+      }
+    }
+
+    print(intro);
+
+    input.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' && game.alive) {
+        const cmd = input.value.trim().toLowerCase();
+        input.value = '';
+        if (actions[cmd]) actions[cmd]();
+        else print("Unknown command. Type 'help' for options.");
+      }
+    });
+  </script></body>
+</html>
